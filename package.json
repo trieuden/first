@@ -1,0 +1,23 @@
+{
+  "name": "full-game",
+  "version": "1.0.0",
+  "description": "first my game",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trieuden/first.git"
+  },
+  "author": "yantic",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
