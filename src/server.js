@@ -1,26 +1,26 @@
-const express = require('express'); //commonjs
-const path = require('path')
 require('dotenv').config();
-
+const express = require('express'); //commonjs
+const configViewEngine = require('./config/viewEngine')
+const webRoutes = require('./routes/web');
+const connection = require('./config/database')
 
 const app = express(); //app express
 const port = process.env.PORT || 8888; //port => hardcode
 const hostname = process.env.HOST_NAME;
 
+
+//simple query
+connection.query(
+    'SELECT * FROM `user` u',
+    function (err, results,fields){
+        console.log(">>>results",results);
+    }
+);
+
 //config template engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+configViewEngine(app)
 
-// khai báo route
+//khai báo routes
+app.use('/', webRoutes);
 
-app.get('/sample', (req, res) => {
-  res.render('sample.ejs');
-});
-
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, hostname, () =>{
-  
-})
+app.listen(port, hostname, () => {});
